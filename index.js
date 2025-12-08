@@ -2,8 +2,7 @@ __path = process.cwd()
 require('dotenv').config()
 require("./settings");
 var express = require('express'),
-    path = require("path")
-    cors = require('cors'),
+    path = require("path"),
     flash = require('connect-flash'),
     rateLimit = require("express-rate-limit"),
     passport = require('passport'),
@@ -61,11 +60,6 @@ app.use(session({
     autoRemove: 'native', // biarkan MongoDB menghapus otomatis expired session
     secret: global.ACTIVATION_TOKEN_SECRET || 'secret',
   }),
-  cookie: {
-    secure: true, // true kalau pakai HTTPS
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 // 1 hari
-  }
 }));
 
 app.use(express.urlencoded({ extended: true }));
