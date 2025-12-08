@@ -44,7 +44,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.enable('trust proxy');
 app.set("json spaces",2)
-app.use(cors())
+//app.use(cors())
+app.use(cors({
+  origin: ['https://syikapi.my.id', 'https://syikapi.vercel.app'],
+  methods: ['GET'],
+  allowedHeaders: ['Content-Type', 'User-Agent']
+}));
 app.use(secure)
 
 app.use(cookieParser());
